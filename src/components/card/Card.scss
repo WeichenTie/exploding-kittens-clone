@@ -1,0 +1,57 @@
+$card-height: 100%;
+$card-offset: 10vh;
+$card-speed: 0.2s;
+
+.card {
+    display:flex;
+    position: relative;
+
+    max-height: $card-height;
+    min-height:6vh;
+
+    padding: 0px;
+
+    border-radius: 1vh;
+    box-shadow: -1px 2px 10px rgba(0, 0, 0, 0.613);
+    box-sizing: border-box;
+    overflow: hidden;
+
+    transition: $card-speed ease-out;
+    left: 0px;
+    bottom: 0px;
+}
+
+.card:not(:first-child) {
+    margin-left: -$card-offset;
+}
+
+.card:hover{
+    transform: scale(1.08);
+}
+
+.card:hover ~ .card {
+    left: $card-offset;
+    margin: -width;
+    transition: $card-speed ease-out;
+}
+
+.card-selected {
+    top: -3rem;
+    transition: $card-speed ease-out;
+}
+.card-selected:hover ~ .card {
+    left: $card-offset;
+    transition: $card-speed ease-out;
+}
+
+.card-image {
+    display:flex;
+
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+
+    justify-content: center;
+    align-items: center;
+}

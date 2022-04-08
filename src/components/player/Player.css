@@ -1,0 +1,35 @@
+.all-player-container {
+  width: 15vw;
+  height: 60vh;
+  background-color: #b39e9e;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[8];
+      grid-template-rows: repeat(8, 1fr);
+}
+
+.player-container:nth-child(even) {
+  background-color: lightgray;
+}
+
+.player-container {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.slam {
+  -webkit-animation: slam 1s;
+          animation: slam 1s;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+  color: #C41818;
+  display: block;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 13em;
+  font-weight: 900;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+/*# sourceMappingURL=Player.css.map */
