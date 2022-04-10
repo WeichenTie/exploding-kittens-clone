@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/exploding-kittens-clone/static/css/main.72a4b615.css",
+    "main.css": "/exploding-kittens-clone/static/css/main.20137d92.css",
     "main.js": "/exploding-kittens-clone/static/js/main.803ce15a.js",
     "static/js/787.e0ad4d64.chunk.js": "/exploding-kittens-clone/static/js/787.e0ad4d64.chunk.js",
     "static/media/cat.gif": "/exploding-kittens-clone/static/media/cat.43739a368fd9d2bdfca4.gif",
@@ -10,12 +10,12 @@
     "static/media/cat-icon.svg": "/exploding-kittens-clone/static/media/cat-icon.8b0506a4456537bbea656941ecc52819.svg",
     "static/media/card-icon.svg": "/exploding-kittens-clone/static/media/card-icon.fb4730d6e0742875565c2f9480c1c426.svg",
     "index.html": "/exploding-kittens-clone/index.html",
-    "main.72a4b615.css.map": "/exploding-kittens-clone/static/css/main.72a4b615.css.map",
+    "main.20137d92.css.map": "/exploding-kittens-clone/static/css/main.20137d92.css.map",
     "main.803ce15a.js.map": "/exploding-kittens-clone/static/js/main.803ce15a.js.map",
     "787.e0ad4d64.chunk.js.map": "/exploding-kittens-clone/static/js/787.e0ad4d64.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.72a4b615.css",
+    "static/css/main.20137d92.css",
     "static/js/main.803ce15a.js"
   ]
 }
