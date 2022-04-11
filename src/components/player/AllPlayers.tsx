@@ -6,7 +6,8 @@ const AllPlayers = () => {
 
 
     return (
-        <div className="all-player-container">
+        <div className="all-players-container">
+            <Player/>
             <Player/>
             <Player/>
             <Player/>

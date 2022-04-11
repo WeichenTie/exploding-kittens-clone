@@ -1,0 +1,12 @@
+{
+  "cards": [
+    {
+      "cardName": "TACOCAT",
+      "cardBorderColour": "grey",
+      "cardImage": null,
+      "cardIcon": null,
+      "cardFlavourText": null,
+      "cardEffectText": "THIS IS A CAT CARD AND IS POWERLESS ON ITS OWN.\nPLAY TWO TACOCATS AS A PAIR TO STEAL A RANDOM CARD FROM ANOTHER PLAYER"
+    }
+  ]
+}
