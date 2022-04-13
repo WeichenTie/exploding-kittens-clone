@@ -1,25 +1,16 @@
 import './Card.css'
-import { InHandCard } from './Card'
 
-const MyCardContainer = () => {
+interface Props {
+    cards: JSX.Element[]
+}
 
-    let cards = [];
-    const limit = 10;
-    for (let i = 0; i < limit; i++) {
-        cards.push(
-            <InHandCard cardName="TACOCAT"
-                cardBorderColour="grey"
-                cardImage={null}
-                cardIcon={null}
-                key={Math.random()*100000}/>
-        );
+const MyCardContainer = (props: Props) => {
+    function MyCard() {
+        
     }
-
-
-
     return (
         <div className="my-card-container">
-            {cards}
+            {props.cards}
         </div>
     )
 }

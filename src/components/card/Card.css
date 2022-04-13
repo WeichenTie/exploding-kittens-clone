@@ -136,10 +136,11 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   overflow: hidden;
-  -webkit-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out, bottom 0.1s ease-out;
+  transition: all 0.2s ease-out, bottom 0.1s ease-out;
   left: 0px;
   bottom: 0px;
+  opacity: 1;
 }
 
 .in-hand-card:not(:first-child) {
@@ -172,6 +173,20 @@
   transition: 0.2s ease-out;
 }
 
+.card-entering {
+  -webkit-transition: all 0.2s ease-out, opacity 0.4s ease-in-out, bottom 0.4s ease-in-out;
+  transition: all 0.2s ease-out, opacity 0.4s ease-in-out, bottom 0.4s ease-in-out;
+}
+
+.card-begin-enter {
+  opacity: 0;
+  bottom: 5rem;
+}
+
+.card-selected {
+  bottom: 2rem;
+}
+
 .card-played {
   width: 28vmin;
   height: 35vmin;
@@ -191,7 +206,6 @@
 .my-card-container {
   width: 65vw;
   height: 100%;
-  padding: 1% 0% 0 0%;
   margin: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

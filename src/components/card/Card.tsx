@@ -1,5 +1,5 @@
 import './Card.css';
-import { useState } from "react";
+import { useState, useEffect, useRef }  from "react";
 import AOS from './../../assets/tacocat.webp'
 import Icon from './../../assets/cat-icon.svg'
 import HelpIcon from './../../assets/question-mark.svg'
@@ -16,8 +16,10 @@ function randn_bm():number {
   }
 
 interface ICard {
+    cardId:string;
     cardClass: string;
     cardName: string;
+    cardOnClick: Function;
     cardBorderColour: string;
     cardImage: any;
     cardIcon: any;
@@ -35,6 +37,7 @@ interface IPlayedCard {
 }
 
 interface IInHandCard {
+    cardId:string;
     cardName: string;
     cardBorderColour: string;
     cardImage: any;
@@ -43,7 +46,11 @@ interface IInHandCard {
 
 const Card = (props:ICard) => {
     return (
-        <div className={props.cardClass} style={{outline: `3px solid ${props.cardBorderColour}`}}>
+        <div id={props.cardId}
+            className={props.cardClass}
+            style={{outline: `3px solid ${props.cardBorderColour}`}}
+            onClick={()=>props.cardOnClick()}
+        >
             <img className="card-help-icon" src={HelpIcon} alt="HelpIcon"/>
             <div className="card-top card-banner">
                 <img className="card-icon" src={Icon} alt={props.cardName}/>
@@ -60,33 +67,64 @@ const Card = (props:ICard) => {
     )
 }
 
-const InHandCard = (props:IInHandCard) => {
+const InHandCard = (props:IInHandCard) :JSX.Element => {
+    const selected = useRef(false);
+    const thisCard = useRef(null);
+
+
+    const cardOnEnter = async () => {
+        thisCard.current = document.getElementById(props.cardId);
+        await new Promise(resolve => setTimeout(()=> {
+            thisCard.current.classList.remove('card-begin-enter');
+            resolve('');
+        }, 0))
+        await new Promise(resolve => setTimeout(resolve, 400))
+        thisCard.current.classList.remove('card-entering');
+    }
+    useEffect(()=>{
+        console.log("loaded in");
+            cardOnEnter()
+        }
+    , []);
+
     return (
-        <Card cardClass='card in-hand-card'
+        <Card
+            cardId={props.cardId}
+            cardClass='card in-hand-card card-entering card-begin-enter'
             cardName={props.cardName}
+            cardOnClick={()=>{
+                if (selected.current) {
+                    thisCard.current.classList.remove('card-selected');
+                } else {
+                    thisCard.current.classList.add('card-selected');
+                }
+                selected.current = !selected.current;
+            }}
             cardBorderColour={props.cardBorderColour}
             cardImage={props.cardImage}
             cardIcon={props.cardIcon}
             cardFlavourText={null}
-            cardEffectText={null}
-            key={Math.random()*100000}/>
+            cardEffectText={null}/>
     )
 }
 
 const PlayedCard = (props:IPlayedCard) => {
+    const id = Math.random() * 1000;
     return (
         <div className='card-played' 
             style={{
                 transform: `rotateZ(${(randn_bm() -0.5) * 60}deg)`}}>
-            <Card 
+            <Card cardId={'card-'+id}
                 cardClass='card'
                 cardName={props.cardName}
+                cardOnClick={()=>{console.log('====================================');
+                    console.log('Pressed');
+                    console.log('====================================');}}
                 cardBorderColour={props.cardBorderColour}
                 cardImage={props.cardImage}
                 cardIcon={props.cardIcon}
                 cardFlavourText={null}
-                cardEffectText={null}
-                key={Math.random()*100000}/>
+                cardEffectText={null}/>
         </div>
     )
 }

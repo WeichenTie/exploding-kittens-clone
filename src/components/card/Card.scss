@@ -121,7 +121,6 @@ $scaling: 1.4;
 
 
 .in-hand-card {
-    
     position: relative;
     
     padding: 0px;
@@ -131,9 +130,12 @@ $scaling: 1.4;
     box-sizing: border-box;
     overflow: hidden;
     
-    transition: all $card-speed ease-out;
+    transition: all $card-speed ease-out, bottom 0.1s ease-out;
     left: 0px;
     bottom: 0px;
+
+    opacity: 1;
+
 }
 
 .in-hand-card:not(:first-child) {
@@ -153,13 +155,27 @@ $scaling: 1.4;
     transform: scale(1.1);
 }
 
-
 .in-hand-card:hover ~ .in-hand-card {
     left: $card-offset;
     margin: -width;
     transition: $card-speed ease-out;
 }
 
+.card-entering {
+    transition: all $card-speed ease-out,
+                opacity 0.4s ease-in-out,
+                bottom 0.4s ease-in-out;
+}
+.card-begin-enter {
+    opacity: 0;
+    bottom: 5rem;
+}
+
+
+
+.card-selected {
+    bottom: 2rem;
+}
 
 // Cards that have been played on the fields
 .card-played {
@@ -179,22 +195,9 @@ $scaling: 1.4;
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .my-card-container {
     width: 65vw;
     height: 100%;
-    padding: 1% 0% 0 0%;
     margin: 0;
 
     box-sizing: border-box;
@@ -205,3 +208,4 @@ $scaling: 1.4;
 
     position: relative;
 }
+
