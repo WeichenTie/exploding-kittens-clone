@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/exploding-kittens-clone/static/css/main.3a473f2d.css",
-    "main.js": "/exploding-kittens-clone/static/js/main.9fcdabfb.js",
+    "main.css": "/exploding-kittens-clone/static/css/main.f893c6d2.css",
+    "main.js": "/exploding-kittens-clone/static/js/main.ab133319.js",
     "static/js/787.e0ad4d64.chunk.js": "/exploding-kittens-clone/static/js/787.e0ad4d64.chunk.js",
     "static/media/cat.gif": "/exploding-kittens-clone/static/media/cat.43739a368fd9d2bdfca4.gif",
     "static/media/woodTexture.jpg": "/exploding-kittens-clone/static/media/woodTexture.3da66d9d1b46a4e5bc40.jpg",
@@ -11,12 +11,12 @@
     "static/media/card-icon.svg": "/exploding-kittens-clone/static/media/card-icon.fb4730d6e0742875565c2f9480c1c426.svg",
     "static/media/question-mark.svg": "/exploding-kittens-clone/static/media/question-mark.92afdb72486725fde56a1625465447de.svg",
     "index.html": "/exploding-kittens-clone/index.html",
-    "main.3a473f2d.css.map": "/exploding-kittens-clone/static/css/main.3a473f2d.css.map",
-    "main.9fcdabfb.js.map": "/exploding-kittens-clone/static/js/main.9fcdabfb.js.map",
+    "main.f893c6d2.css.map": "/exploding-kittens-clone/static/css/main.f893c6d2.css.map",
+    "main.ab133319.js.map": "/exploding-kittens-clone/static/js/main.ab133319.js.map",
     "787.e0ad4d64.chunk.js.map": "/exploding-kittens-clone/static/js/787.e0ad4d64.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3a473f2d.css",
-    "static/js/main.9fcdabfb.js"
+    "static/css/main.f893c6d2.css",
+    "static/js/main.ab133319.js"
   ]
 }
