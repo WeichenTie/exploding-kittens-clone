@@ -1,7 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+ol {
+  list-style-type: none;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
+  -webkit-margin-start: 0;
+          margin-inline-start: 0;
+  -webkit-margin-end: 0;
+          margin-inline-end: 0;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+}
+
 .card {
-  width: 20vmin;
-  height: 25vmin;
+  width: 20vh;
+  height: 25vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10,19 +24,19 @@
       -ms-flex-direction: column;
           flex-direction: column;
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 auto;
-          flex: 0 1 auto;
-  position: absolute;
-  border-width: 0.5rem;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  position: relative;
+  border-width: 8px;
   border-style: solid;
   border-color: white;
   outline-offset: -10px;
   -webkit-box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.369);
           box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.369);
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   background-color: white;
   font-family: 'Roboto Slab', serif;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
 }
 
 .card-banner {
@@ -75,8 +89,6 @@
   height: 2vh;
   width: 2vh;
   background-color: rgba(118, 151, 205, 0.716);
-  -webkit-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
 }
 
 .card-help-icon:last-child {
@@ -130,72 +142,31 @@
 }
 
 .in-hand-card {
-  position: relative;
-  padding: 0px;
-  border-radius: 1vh;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
   overflow: hidden;
-  -webkit-transition: all 0.2s ease-out, bottom 0.1s ease-out;
-  transition: all 0.2s ease-out, bottom 0.1s ease-out;
-  left: 0px;
-  bottom: 0px;
-  opacity: 1;
-}
-
-.in-hand-card:not(:first-child) {
-  margin-left: -10vh;
-}
-
-.in-hand-card:last-child {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-}
-
-.in-hand-card:hover {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
-
-.in-hand-card:hover .card-help-icon {
-  display: block;
-  background-color: #468dff;
-}
-
-.in-hand-card:hover ~ .in-hand-card {
-  left: 10vh;
-  margin: -width;
-  -webkit-transition: 0.2s ease-out;
-  transition: 0.2s ease-out;
-}
-
-.card-entering {
-  -webkit-transition: all 0.2s ease-out, opacity 0.4s ease-in-out, bottom 0.4s ease-in-out;
-  transition: all 0.2s ease-out, opacity 0.4s ease-in-out, bottom 0.4s ease-in-out;
-}
-
-.card-begin-enter {
-  opacity: 0;
-  bottom: 5rem;
-}
-
-.card-selected {
-  bottom: 2rem;
+  border-radius: 1vh;
+  position: relative;
+  -webkit-box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.305);
+          box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.305);
+  left: 0;
+  -webkit-transition: left 0.3s ease-out;
+  transition: left 0.3s ease-out;
 }
 
 .card-played {
-  width: 28vmin;
-  height: 35vmin;
+  width: 28vh;
+  height: 35vh;
   position: absolute;
 }
 
 .card-played .card {
-  width: 28vmin;
-  height: 35vmin;
+  width: 28vh;
+  height: 35vh;
   position: absolute;
 }
 
@@ -203,9 +174,10 @@
   font-size: 140%;
 }
 
-.my-card-container {
+#my-card-container {
   width: 65vw;
   height: 100%;
+  padding: 30px;
   margin: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

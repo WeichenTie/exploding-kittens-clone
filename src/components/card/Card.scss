@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 
-$card-height: 25vmin;
+$card-height: 25vh;
 $card-width: $card-height * 2/2.5;
 $card-offset: 10vh;
 $card-hover-height: 2vh;
@@ -10,29 +10,37 @@ $card-speed: 0.2s;
 $scaling: 1.4;
 
 
+ol {
+    list-style-type:none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+}
+
 .card {
     width: $card-width;
     height: $card-height;
 
     display:flex;
     flex-direction: column;
-    flex: 0 1 auto;
+    flex: 0 0 auto;
 
-    position: absolute;
+    position: relative;
     
-    border-width: 0.5rem;
+    border-width: 8px;
     border-style: solid;
     border-color: white;
 
     outline-offset: -10px;
     
     box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.369);
+    box-sizing: content-box;
+
     background-color: white;
 
     font-family: 'Roboto Slab', serif;
-
-    transform-style: preserve-3d;
-
 }
 
 
@@ -77,8 +85,6 @@ $scaling: 1.4;
     height: 2vh;
     width:  2vh;
     background-color: rgba(118, 151, 205, 0.716);
-
-    transition: all 0.2s ease-out;
 }
 
 .card-help-icon:last-child {
@@ -112,69 +118,24 @@ $scaling: 1.4;
         top: 10rem;
     }
 }
-
 .card-bottom {
     bottom: 0;
     left: -6px;
     transform: rotate(180deg);
 }
 
-
 .in-hand-card {
-    position: relative;
-    
-    padding: 0px;
-    
-    border-radius: 1vh;
-    
-    box-sizing: border-box;
+    display: flex;
+    flex: 0 0 auto;
     overflow: hidden;
     
-    transition: all $card-speed ease-out, bottom 0.1s ease-out;
-    left: 0px;
-    bottom: 0px;
+    border-radius: 1vh;
+    position: relative;
+    
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.305);
 
-    opacity: 1;
-
-}
-
-.in-hand-card:not(:first-child) {
-    margin-left: -$card-offset;
-}
-
-.in-hand-card:last-child {
-    flex: 0 0 auto;
-}
-
-.in-hand-card:hover{
-    .card-help-icon {
-        display: block;
-        background-color: rgb(70, 141, 255);
-    }
-    flex: 0 0 auto;
-    transform: scale(1.1);
-}
-
-.in-hand-card:hover ~ .in-hand-card {
-    left: $card-offset;
-    margin: -width;
-    transition: $card-speed ease-out;
-}
-
-.card-entering {
-    transition: all $card-speed ease-out,
-                opacity 0.4s ease-in-out,
-                bottom 0.4s ease-in-out;
-}
-.card-begin-enter {
-    opacity: 0;
-    bottom: 5rem;
-}
-
-
-
-.card-selected {
-    bottom: 2rem;
+    left: 0;
+    transition: left 0.3s ease-out;
 }
 
 // Cards that have been played on the fields
@@ -195,11 +156,13 @@ $scaling: 1.4;
     }
 }
 
-.my-card-container {
+
+
+#my-card-container {
     width: 65vw;
     height: 100%;
+    padding: 30px;
     margin: 0;
-
     box-sizing: border-box;
     
     display: flex;
@@ -207,5 +170,6 @@ $scaling: 1.4;
     justify-content: flex-start;
 
     position: relative;
+
 }
 
