@@ -1,4 +1,4 @@
-import { useDebugValue, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 
 const useComponentDimension = (id: string) => {

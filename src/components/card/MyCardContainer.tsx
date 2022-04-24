@@ -1,6 +1,6 @@
 import "./Card.css";
 // React hooks
-import { useState, useEffect, useReducer } from "react";
+import { useState, useEffect, useReducer, useLayoutEffect } from "react";
 import useComponentDimension from "../hooks/useComponentDimension";
 
 import { motion, LayoutGroup, AnimatePresence } from "framer-motion";
@@ -12,57 +12,46 @@ import { selectMyCards } from "../../redux/slices/GameStateSlice";
 
 import { CardInHandFactory } from "./CardFactory";
 
-let cardProperties = {
-  width: 100,
-};
-
-const StyledMyCardContainer = styled(motion.ol)`
+const StyledMyCardContainer = styled(motion.ol)<{ margin: number }>`
   & .in-hand-card {
-    &:not(:first-child) {
-      margin-left: ${() => -cardProperties.width}px;
+    &:not(:last-of-type) {
+      margin-right: ${(props) => -props.margin}px;
     }
     &:hover ~ .in-hand-card {
-      left: ${() => cardProperties.width}px;
+      left: ${(props) => props.margin}px;
     }
   }
 `;
-
 const MyCardContainer = () => {
   const [myCards, setMyCards] = useState<JSX.Element[]>([]);
-  const [_, forceUpdate] = useReducer((x) => x + 1, 0);
   const { width } = useComponentDimension("my-card-container");
   // Redux
   const myCardsSelector = useSelector(selectMyCards);
-  
+
   // Load in all cards into container
   useEffect(() => {
     setMyCards(() =>
-      myCardsSelector.map((card) => {
-        return CardInHandFactory(card.id, card.cardName);
+      myCardsSelector.map((card: any) => {
+        return CardInHandFactory(card.id, card.type);
       })
     );
-    setTimeout(() => forceUpdate(), 60);
   }, [myCardsSelector]);
 
-  // Calculates the nominal card offset to ensure it does
-  // not overflow the container
-  const cardWidth = window.innerHeight / 5 + 16; // 5 from 20vh 16 for border
-  cardProperties.width = Math.max(
-    window.innerHeight / 10,
-    (cardWidth * document.getElementsByClassName("in-hand-card").length -
-      (width - 60)) /
-      (document.getElementsByClassName("in-hand-card").length - 1)
-  ); // 60 from padding: ;
-
   return (
-    <StyledMyCardContainer id="my-card-container">
-      <LayoutGroup>
-        <AnimatePresence>
-          {myCards}
-        </AnimatePresence>
-      </LayoutGroup>
-    </StyledMyCardContainer>
+    <div>
+      <StyledMyCardContainer
+        layout
+        margin={Math.max(
+          window.innerHeight / 10,
+          ((window.innerHeight / 5 + 16) * myCards.length - (width - 60)) /
+            (myCards.length - 1)
+        )}
+        id="my-card-container"
+      >
+        {myCards}
+      </StyledMyCardContainer>
+    </div>
   );
 };
 
-export { MyCardContainer, cardProperties };
+export { MyCardContainer };

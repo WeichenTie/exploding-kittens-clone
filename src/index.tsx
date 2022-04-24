@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import Login from './screen/login/Login';
-import {Game} from './screen/game/Game';
+
 import reportWebVitals from './reportWebVitals';
 import store from './redux/Store'
 import { Provider } from 'react-redux'
+import App from './App';
 
 
 const container = document.getElementById('root');
@@ -14,7 +15,7 @@ const root = createRoot(container);
 root.render(
     // <React.StrictMode>
         <Provider store={store}>
-            <Game />
+            <App></App>
         </Provider>
     // </React.StrictMode>
 );

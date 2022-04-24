@@ -1,19 +1,22 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../Store";
 
 export const GameStateSlice = createSlice({
   name: "gameState",
-  initialState:
-  {
+  initialState: {
     myCards: [],
+    selectedCards: [],
     graveyardCards: [],
-    gameEvent: '',
-    cardsInDeck: [],
+    gameEvent: "",
+    cardsInDeck: 0,
   },
   reducers: {
     ////////////////////////////////////////////////////////
     //                   My Card Actions                  //
     ////////////////////////////////////////////////////////
+    setCards: (state, action) => {
+      state.myCards = [...action.payload];
+    },
     addCard: (state, action) => {
       state.myCards = [...state.myCards, action.payload];
     },
@@ -21,50 +24,40 @@ export const GameStateSlice = createSlice({
       state.myCards = state.myCards.filter((card) => {
         return card.id !== action.payload;
       });
-    },
-    removeSelectedCards: (state) => {
-      state.myCards = state.myCards.filter((card) => {
-        return !card.isSelected;
+      state.selectedCards = state.selectedCards.filter((card) => {
+        return card.id !== action.payload;
       });
     },
+    clearSelectedCards: (state) => {
+      state.selectedCards = [];
+    },
     selectCard: (state, action) => {
-      for (let index in state.myCards) {
-        if (state.myCards[index].id === action.payload) {
-          const newCard = {
-            ...state.myCards[index],
-            isSelected: true,
-          };
-          state.myCards[index] = newCard;
-          break;
-        }
-      }
+      state.selectedCards = [...state.selectedCards, action.payload];
     },
     deselectCard: (state, action) => {
-      for (let index in state.myCards) {
-        if (state.myCards[index].id === action.payload) {
-          const newCard = {
-            ...state.myCards[index],
-            isSelected: false,
-          };
-          state.myCards[index] = newCard;
-          break;
-        }
-      }
+      state.selectedCards = state.selectedCards.filter((card) => {
+        return card !== action.payload;
+      });
+    },
+    ////////////////////////////////////////////////////////
+    //                 Deck Cards Actions                 //
+    ////////////////////////////////////////////////////////
+    setDeck: (state, action) => {
+      state.cardsInDeck = action.payload;
     },
     ////////////////////////////////////////////////////////
     //             Graveyard Cards Actions                //
     ////////////////////////////////////////////////////////
     setGraveYard: (state, action) => {
-
+      state.graveyardCards = [...action.payload];
     },
     ////////////////////////////////////////////////////////
     //                   Game Events                      //
     ////////////////////////////////////////////////////////
     setGameEvent: (state, action) => {
       state.gameEvent = action.payload;
-    } 
+    },
   },
-  
 });
 
 export const {
@@ -72,13 +65,21 @@ export const {
   selectCard,
   deselectCard,
   removeCard,
-  removeSelectedCards,
+  clearSelectedCards,
   setGameEvent,
+  setCards,
+  setDeck,
+  setGraveYard,
 } = GameStateSlice.actions;
 
 export const selectMyCards = (state: RootState) =>
   state.GameStateReducers.myCards;
-
+export const selectSelectedCards = (state: RootState) =>
+  state.GameStateReducers.selectedCards;
+export const selectDeck = (state: RootState) =>
+  state.GameStateReducers.cardsInDeck;
+export const selectGraveyard = (state: RootState) =>
+  state.GameStateReducers.graveyardCards;
 export const selectGameEvents = (state: RootState) =>
   state.GameStateReducers.gameEvent;
 
